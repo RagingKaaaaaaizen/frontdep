@@ -3,8 +3,10 @@ services:
     name: inventory-frontend
     env: static
     plan: free
-    buildCommand: npm install --legacy-peer-deps && npm run build
-    staticPublishPath: ./dist
+    buildCommand: npm ci --legacy-peer-deps && npm run build --prod
+    staticPublishPath: ./dist/angular-signup-verification-boilerplate
     envVars:
       - key: API_URL
         value: https://backdep.onrender.com
+      - key: NODE_ENV
+        value: production
