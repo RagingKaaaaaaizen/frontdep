@@ -1,9 +1,13 @@
 #!/bin/bash
 
+echo "🚀 Starting build process..."
+
 # Clean install dependencies
+echo "📦 Installing dependencies..."
 npm ci --legacy-peer-deps
 
-# Build the application
+# Build the application (skip linting)
+echo "🔨 Building application..."
 npm run build --prod
 
 # Check if build was successful
