@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: inventory-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: API_URL
+        value: https://backdep.onrender.com
