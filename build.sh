@@ -26,7 +26,7 @@ echo ""
 echo "🔧 Temporarily forcing production environment..."
 cp src/environments/environment.prod.ts src/environments/environment.ts
 
-# Build with explicit production configuration
+# Build with forced production config
 echo "🔨 Building application with forced production config..."
 npm run build --prod --configuration=production --verbose
 
@@ -51,6 +51,8 @@ if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
     echo "🔍 Checking for localhost references..."
     if grep -r "localhost:4000" dist/angular-signup-verification-boilerplate/; then
         echo "❌ Found localhost:4000 references!"
+        echo "🔍 Checking which files contain localhost:"
+        grep -r "localhost:4000" dist/angular-signup-verification-boilerplate/ --include="*.js" -n
     else
         echo "✅ No localhost references found"
     fi
@@ -65,6 +67,14 @@ if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
         echo "✅ Found backdep.onrender.com in built files"
     else
         echo "❌ backdep.onrender.com NOT found in built files"
+    fi
+    
+    # Check for any remaining environment references
+    echo "🔍 Checking for environment references..."
+    if grep -r "environment" dist/angular-signup-verification-boilerplate/ --include="*.js"; then
+        echo "⚠️  Found environment references in built files"
+    else
+        echo "✅ No environment references found"
     fi
 else
     echo "❌ Build failed!"

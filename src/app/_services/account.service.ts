@@ -4,8 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 
-// Force production URL - this should be replaced during build
-import { environment } from '../../environments/environment';
+// REMOVED: import { environment } from '../../environments/environment';
 import { Account } from '@app/_models';
 
 // TEMPORARY FIX: Hardcode the production URL to ensure it works
@@ -61,7 +60,8 @@ export class AccountService {
     }           
 
     register(account: Account) {
-        return this.http.post(`${baseUrl}/register`, account);
+        // TEMPORARY FIX: Hardcode the URL directly
+        return this.http.post('https://backdep.onrender.com/api/accounts/register', account);
     }
 
     verifyEmail(token: string) {
