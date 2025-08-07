@@ -4,11 +4,12 @@ import { HttpClient } from "@angular/common/http";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map, finalize } from "rxjs/operators";
 
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 import { Department } from "../_models/department";
 import { AccountService } from "./account.service";
 
-const baseUrl = `${environment.apiUrl}/api/departments`;
+// TEMPORARY FIX: Hardcode the production URL to ensure it works
+const baseUrl = 'https://backdep.onrender.com/api/departments';
 
 
 @Injectable({ providedIn: 'root' })

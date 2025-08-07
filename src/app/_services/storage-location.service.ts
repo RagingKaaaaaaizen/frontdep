@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 import { StorageLocation } from '../_models/storagelocation';
 
 @Injectable({ providedIn: 'root' })
 export class StorageLocationService {
-  private baseUrl = `${environment.apiUrl}/api/storage-locations`;
+  // TEMPORARY FIX: Hardcode the production URL to ensure it works
+  private baseUrl = 'https://backdep.onrender.com/api/storage-locations';
 
   constructor(private http: HttpClient) {}
 

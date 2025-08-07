@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { Dispose } from '../_models';
 
-const baseUrl = `${environment.apiUrl}/api/dispose`;
+// TEMPORARY FIX: Hardcode the production URL to ensure it works
+const baseUrl = 'https://backdep.onrender.com/api/dispose';
 
 export interface DisposalValidation {
   valid: boolean;

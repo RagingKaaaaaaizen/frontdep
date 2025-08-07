@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {
-  private baseUrl = `${environment.apiUrl}/api/items`;
+  // TEMPORARY FIX: Hardcode the production URL to ensure it works
+  private baseUrl = 'https://backdep.onrender.com/api/items';
 
   constructor(private http: HttpClient) {}
 

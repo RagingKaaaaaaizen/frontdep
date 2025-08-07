@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 Starting aggressive build process..."
+echo "🚀 Starting ULTIMATE aggressive build process..."
 
 # Clean everything
 echo "🧹 Cleaning all caches and build artifacts..."
@@ -22,9 +22,17 @@ echo "Production environment:"
 cat src/environments/environment.prod.ts
 echo ""
 
+# Force production environment by temporarily replacing the dev environment
+echo "🔧 Temporarily forcing production environment..."
+cp src/environments/environment.prod.ts src/environments/environment.ts
+
 # Build with explicit production configuration
-echo "🔨 Building application with explicit production config..."
+echo "🔨 Building application with forced production config..."
 npm run build --prod --configuration=production --verbose
+
+# Restore the original development environment
+echo "🔄 Restoring development environment..."
+git checkout src/environments/environment.ts
 
 # Check if build was successful
 if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
@@ -37,7 +45,7 @@ if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
     if grep -q "backdep.onrender.com" dist/angular-signup-verification-boilerplate/main.js; then
         echo "✅ Backend URL correctly configured"
     else
-        echo "⚠️  Backend URL might not be correct"
+        echo "❌ Backend URL NOT found!"
     fi
     
     echo "🔍 Checking for localhost references..."
@@ -50,6 +58,14 @@ if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
     # Show all URLs found in main.js
     echo "🔍 All URLs found in main.js:"
     grep -o 'https\?://[^"'\''\s]*' dist/angular-signup-verification-boilerplate/main.js | sort | uniq
+    
+    # Check the account service specifically
+    echo "🔍 Checking account service URLs..."
+    if grep -r "backdep.onrender.com" dist/angular-signup-verification-boilerplate/; then
+        echo "✅ Found backdep.onrender.com in built files"
+    else
+        echo "❌ backdep.onrender.com NOT found in built files"
+    fi
 else
     echo "❌ Build failed!"
     exit 1

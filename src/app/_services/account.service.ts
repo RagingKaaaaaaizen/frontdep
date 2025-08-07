@@ -4,10 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 
-import { environment } from '@environments/environment';
+// Force production URL - this should be replaced during build
+import { environment } from '../../environments/environment';
 import { Account } from '@app/_models';
 
-const baseUrl = `${environment.apiUrl}/api/accounts`;
+// TEMPORARY FIX: Hardcode the production URL to ensure it works
+const baseUrl = 'https://backdep.onrender.com/api/accounts';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {

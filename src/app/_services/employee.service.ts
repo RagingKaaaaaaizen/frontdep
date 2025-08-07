@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable, throwError } from "rxjs";
 import { map, finalize, catchError, switchMap } from "rxjs/operators";
 import { Employee } from '../_models/employee'
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { AlertService } from './alert.service';
 
-const baseUrl = `${environment.apiUrl}/api/employees`;
+// TEMPORARY FIX: Hardcode the production URL to ensure it works
+const baseUrl = 'https://backdep.onrender.com/api/employees';
 
 @Injectable({ providedIn: 'root'})
 export class EmployeeService{

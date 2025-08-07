@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '@environments/environment';
+// import { environment } from '@environments/environment';
 import { Workflow } from '@app/_models/workflow';
 
 @Injectable({ providedIn: 'root' })
 export class WorkflowService {
-    private baseUrl = `${environment.apiUrl}/api/workflows`;
+    // TEMPORARY FIX: Hardcode the production URL to ensure it works
+    private baseUrl = 'https://backdep.onrender.com/api/workflows';
 
     constructor(private http: HttpClient) { }
 
