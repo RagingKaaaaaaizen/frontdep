@@ -1,16 +1,19 @@
 #!/bin/bash
 
-echo "🚀 Starting build process..."
+echo "🚀 Starting aggressive build process..."
 
-# Clean Angular cache
-echo "🧹 Cleaning Angular cache..."
+# Clean everything
+echo "🧹 Cleaning all caches and build artifacts..."
 rm -rf .angular
+rm -rf node_modules
+rm -rf dist
+rm -f package-lock.json
 
-# Clean install dependencies
-echo "📦 Installing dependencies..."
-npm ci --legacy-peer-deps
+# Fresh install
+echo "📦 Fresh install of dependencies..."
+npm install --legacy-peer-deps
 
-# Build the application with production configuration
+# Build with production configuration
 echo "🔨 Building application with production config..."
 npm run build --prod --configuration=production
 
@@ -25,6 +28,8 @@ if [ -f "dist/angular-signup-verification-boilerplate/index.html" ]; then
         echo "✅ Backend URL correctly configured"
     else
         echo "⚠️  Backend URL might not be correct"
+        echo "🔍 Checking for localhost references..."
+        grep -r "localhost:4000" dist/angular-signup-verification-boilerplate/ || echo "✅ No localhost references found"
     fi
 else
     echo "❌ Build failed!"
