@@ -3,7 +3,7 @@ services:
     name: inventory-frontend
     env: static
     plan: free
-    buildCommand: npm ci --legacy-peer-deps && npm run build --prod
+    buildCommand: chmod +x build.sh && ./build.sh
     staticPublishPath: ./dist/angular-signup-verification-boilerplate
     envVars:
       - key: API_URL
