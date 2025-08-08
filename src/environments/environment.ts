@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://inventory-backend-api-production-030e.up.railway.app/api'
+  apiUrl: 'https://inventory-backend-api-cr3z.onrender.com'
 };
 
 /*
