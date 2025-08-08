@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { PCService, PCComponentService, StockService, ItemService, CategoryService, BrandService, AlertService, AccountService } from '@app/_services';
+import { PcService } from '@app/_services';
+import { PCComponentService } from '@app/_services/pc-component.service';
+import { StockService } from '@app/_services/stock.service';
+import { ItemService } from '@app/_services/item.service';
+import { CategoryService } from '@app/_services/category.service';
+import { BrandService } from '@app/_services/brand.service';
+import { AlertService } from '@app/_services/alert.service';
+import { AccountService } from '@app/_services/account.service';
 import { PCComponent, Role } from '@app/_models';
 
 @Component({
@@ -105,7 +112,7 @@ export class PCComponentsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private pcService: PCService,
+    private pcService: PcService,
     private pcComponentService: PCComponentService,
     private stockService: StockService,
     private itemService: ItemService,

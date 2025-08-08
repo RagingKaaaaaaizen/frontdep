@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { StorageLocationService, RoomLocationService } from '../../_services';
+import { StorageLocationService } from '../../_services/storage-location.service';
+import { RoomLocationService } from '../../_services/room-location.service';
 import { ItemService } from '../../_services/item.service';
 import { AlertService } from '../../_services/alert.service';
 import { Role } from '../../_models';

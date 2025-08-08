@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { Brand } from '../_models/brand';
+import { environment } from '@environments/environment';
 
-const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/brands';
+const baseUrl = `${environment.apiUrl}/brands`;
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(baseUrl);
+    return this.http.get<Brand[]>(`${baseUrl}/public`);
   }
 
   getById(id: number): Observable<Brand> {

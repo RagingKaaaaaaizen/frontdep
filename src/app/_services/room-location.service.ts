@@ -1,10 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '@environments/environment';
 
-const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/room-locations';
+const baseUrl = `${environment.apiUrl}/room-locations`;
 
 @Injectable({ providedIn: 'root' })
 export class RoomLocationService {
   constructor(private http: HttpClient) {}
-  getAll() { return this.http.get<any[]>(baseUrl); }
+  
+  getAll(): Observable<any[]> { 
+    return this.http.get<any[]>(`${environment.apiUrl}/room-locations/public`); 
+  }
+
+  getById(id: number | string): Observable<any> { 
+    return this.http.get<any>(`${environment.apiUrl}/room-locations/${id}`); 
+  }
+
+  create(location: any): Observable<any> { 
+    return this.http.post<any>(`${environment.apiUrl}/room-locations`, location); 
+  }
+
+  update(id: number | string, location: any): Observable<any> { 
+    return this.http.put<any>(`${environment.apiUrl}/room-locations/${id}`, location); 
+  }
+
+  delete(id: number | string): Observable<void> { 
+    return this.http.delete<void>(`${environment.apiUrl}/room-locations/${id}`); 
+  }
 } 

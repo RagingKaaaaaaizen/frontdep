@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService, PCService, PCComponentService, RoomLocationService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
+import { AlertService } from '@app/_services/alert.service';
+import { PcService } from '@app/_services';
+import { PCComponentService } from '@app/_services/pc-component.service';
+import { RoomLocationService } from '@app/_services/room-location.service';
 import { Role } from '@app/_models';
 
 @Component({
@@ -576,7 +580,7 @@ export class PCListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private pcService: PCService,
+    private pcService: PcService,
     private pcComponentService: PCComponentService,
     private locationService: RoomLocationService,
     private alertService: AlertService,

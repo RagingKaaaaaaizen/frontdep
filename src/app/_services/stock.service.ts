@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { environment } from '@environments/environment';
+import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { Stock } from '../_models/stock';
 
-const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/stocks';
+const baseUrl = `${environment.apiUrl}/stocks`;
 
 @Injectable({ providedIn: 'root' })
 export class StockService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Stock[]> {
-    return this.http.get<Stock[]>(baseUrl);
+    return this.http.get<Stock[]>(`${baseUrl}/public`);
   }
 
   getById(id: number): Observable<Stock> {

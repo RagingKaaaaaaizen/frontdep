@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { StorageLocationService, RoomLocationService } from '../../_services';
+import { StorageLocationService } from '../../_services/storage-location.service';
+import { RoomLocationService } from '../../_services/room-location.service';
 import { AlertService } from '../../_services/alert.service';
 
 @Component({

@@ -2,7 +2,7 @@
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AccountService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
 import { Account } from '@app/_models';
 
 @Component({ templateUrl: 'list.component.html' })

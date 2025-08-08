@@ -4,7 +4,10 @@ import { first } from 'rxjs/operators';
 
 import { DisposeService } from '../_services/dispose.service';
 import { Dispose } from '../_models';
-import { AccountService, AlertService, CategoryService, StorageLocationService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
+import { AlertService } from '@app/_services/alert.service';
+import { CategoryService } from '@app/_services/category.service';
+import { StorageLocationService } from '@app/_services/storage-location.service';
 import { Role } from '../_models';
 
 @Component({

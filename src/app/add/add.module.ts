@@ -5,6 +5,7 @@ import { AddRoutingModule } from './add-routing.module';
 
 import { CategoryListComponent } from './category/category-list.component';
 import { CategoryEditComponent } from './category/category-edit.component';
+import { CategoryAddComponent } from './category/category-add.component';
 import { ItemListComponent } from './item/item-list.component';
 import { ItemEditComponent } from './item/item-edit.component';
 import { ItemAddComponent } from './item/item-add.component';
@@ -22,6 +23,7 @@ import { OverviewComponent } from './overview.component';
     OverviewComponent,
     CategoryListComponent,
     CategoryEditComponent,
+    CategoryAddComponent,
     ItemListComponent,
     ItemEditComponent,
     ItemAddComponent,

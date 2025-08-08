@@ -3,10 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { environment } from '../../environments/environment';
 import { PC, SpecificationField } from '../_models/pc';
+import { environment } from '@environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class PcService {
-    private baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/pcs';
     constructor(private http: HttpClient) {}
-    getAll() { return this.http.get<any[]>(this.baseUrl); }
+    getAll(): Observable<any[]> { return this.http.get<any[]>(`${environment.apiUrl}/pcs`); }
+
+    getById(id: number | string): Observable<any> { return this.http.get<any>(`${environment.apiUrl}/pcs/${id}`); }
+
+    create(pc: any): Observable<any> { return this.http.post<any>(`${environment.apiUrl}/pcs`, pc); }
+
+    update(id: number | string, pc: any): Observable<any> { return this.http.put<any>(`${environment.apiUrl}/pcs/${id}`, pc); }
+
+    delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/pcs/${id}`); }
 } 

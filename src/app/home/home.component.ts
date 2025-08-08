@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { AccountService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
 import { Role } from '@app/_models';
 
 @Component({ 

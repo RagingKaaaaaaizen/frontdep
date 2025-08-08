@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
-import { DepartmentService, AlertService } from '@app/_services';
+import { DepartmentService } from '@app/_services/department.service';
+import { AlertService } from '@app/_services/alert.service';
 
 @Component({ templateUrl: 'add-edit.component.html'})
 export class AddEditComponent{

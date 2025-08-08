@@ -2,7 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService, StockService, ItemService, CategoryService, BrandService, StorageLocationService, PCService, PCComponentService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
+import { AlertService } from '@app/_services/alert.service';
+import { StockService } from '@app/_services/stock.service';
+import { ItemService } from '@app/_services/item.service';
+import { CategoryService } from '@app/_services/category.service';
+import { BrandService } from '@app/_services/brand.service';
+import { StorageLocationService } from '@app/_services/storage-location.service';
+import { PcService } from '@app/_services';
+import { PCComponentService } from '@app/_services/pc-component.service';
 import { Role } from '@app/_models';
 
 @Component({
@@ -607,7 +615,7 @@ export class StockListComponent implements OnInit {
     private categoryService: CategoryService,
     private brandService: BrandService,
     private locationService: StorageLocationService,
-    private pcService: PCService,
+    private pcService: PcService,
     private pcComponentService: PCComponentService,
     private alertService: AlertService,
     public accountService: AccountService

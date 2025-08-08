@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { PCService, RoomLocationService, AlertService } from '@app/_services';
+import { PcService } from '@app/_services';
+import { RoomLocationService } from '@app/_services/room-location.service';
+import { AlertService } from '@app/_services/alert.service';
 import { PC } from '../_models/pc';
 
 @Component({ templateUrl: 'pc-add-edit.component.html' })
@@ -19,7 +21,7 @@ export class PCAddEditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private pcService: PCService,
+        private pcService: PcService,
         private roomLocationService: RoomLocationService,
         private alertService: AlertService
     ) { }

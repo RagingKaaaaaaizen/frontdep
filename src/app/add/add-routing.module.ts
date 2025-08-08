@@ -5,6 +5,7 @@ import { Role } from '@app/_models';
 
 import { CategoryListComponent } from './category/category-list.component';
 import { CategoryEditComponent } from './category/category-edit.component';
+import { CategoryAddComponent } from './category/category-add.component';
 import { ItemListComponent } from './item/item-list.component';
 import { ItemEditComponent } from './item/item-edit.component';
 import { BrandListComponent } from './brand/brand-list.component';
@@ -19,7 +20,7 @@ import { OverviewComponent } from './overview.component';
 const routes: Routes = [
   { path: '', component: OverviewComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin] } },        // default overview
   { path: 'category', component: CategoryListComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin, Role.Viewer] } },
-  { path: 'category/add', component: CategoryEditComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin] } },
+  { path: 'category/add', component: CategoryAddComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin] } },
   { path: 'category/edit/:id', component: CategoryEditComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin] } },
   { path: 'category/view/:id', component: CategoryEditComponent, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin, Role.Admin, Role.Viewer] } },
 

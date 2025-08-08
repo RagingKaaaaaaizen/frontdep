@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 
-import { AccountService } from '@app/_services';
+import { AccountService } from '@app/_services/account.service';
 
 @Component({ 
     templateUrl: 'details.component.html',

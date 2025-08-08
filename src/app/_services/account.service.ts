@@ -4,11 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 
-// REMOVED: import { environment } from '../../environments/environment';
+import { environment } from '@environments/environment';
 import { Account } from '@app/_models';
 
-// TEMPORARY FIX: Hardcode the production URL to ensure it works
-const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/accounts';
+const baseUrl = `${environment.apiUrl}/accounts`;
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -60,8 +59,7 @@ export class AccountService {
     }           
 
     register(account: Account) {
-        // TEMPORARY FIX: Hardcode the URL directly
-        return this.http.post('https://inventory-backend-api-production-030e.up.railway.app/api/accounts/register', account);
+        return this.http.post(`${baseUrl}/register`, account);
     }
 
     verifyEmail(token: string) {

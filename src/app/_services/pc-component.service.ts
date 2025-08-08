@@ -3,8 +3,9 @@ import { HttpClient } from '@angular/common/http';
 // import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { PCComponent } from '../_models';
+import { environment } from '@environments/environment';
 
-const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/pc-components';
+const baseUrl = `${environment.apiUrl}/pc-components`;
 
 @Injectable({ providedIn: 'root' })
 export class PCComponentService {

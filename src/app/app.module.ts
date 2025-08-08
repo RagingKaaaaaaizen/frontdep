@@ -8,7 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor, ErrorInterceptor, appInitializer } from './_helpers';
-import { AccountService } from './_services';
+import { AccountService } from './_services/account.service';
 import { AppComponent } from './app.component';
 import { AlertComponent, NavComponent, ProfessionalTableComponent } from './_components';
 import { HomeComponent } from './home';
