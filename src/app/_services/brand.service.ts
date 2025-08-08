@@ -4,8 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Brand } from '../_models/brand';
 
-// TEMPORARY FIX: Hardcode the production URL to ensure it works
-const baseUrl = 'https://backdep.onrender.com/api/brands';
+const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/brands';
 
 @Injectable({ providedIn: 'root' })
 export class BrandService {

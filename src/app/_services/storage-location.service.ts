@@ -6,33 +6,7 @@ import { StorageLocation } from '../_models/storagelocation';
 
 @Injectable({ providedIn: 'root' })
 export class StorageLocationService {
-  // TEMPORARY FIX: Hardcode the production URL to ensure it works
-  private baseUrl = 'https://backdep.onrender.com/api/storage-locations';
-
+  private baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/storage-locations';
   constructor(private http: HttpClient) {}
-
-  /** Get all storage locations */
-  getAll(): Observable<StorageLocation[]> {
-    return this.http.get<StorageLocation[]>(this.baseUrl);
-  }
-
-  /** Get a storage location by ID */
-  getById(id: number): Observable<StorageLocation> {
-    return this.http.get<StorageLocation>(`${this.baseUrl}/${id}`);
-  }
-
-  /** Create new storage location */
-  create(location: StorageLocation): Observable<StorageLocation> {
-    return this.http.post<StorageLocation>(this.baseUrl, location);
-  }
-
-  /** Update existing storage location */
-  update(id: number, location: StorageLocation): Observable<StorageLocation> {
-    return this.http.put<StorageLocation>(`${this.baseUrl}/${id}`, location);
-  }
-
-  /** Delete storage location */
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  }
+  getAll() { return this.http.get<any[]>(this.baseUrl); }
 }

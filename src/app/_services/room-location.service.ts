@@ -1,32 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { environment } from '@environments/environment';
-import { Observable } from 'rxjs';
 
-// TEMPORARY FIX: Hardcode the production URL to ensure it works
-const baseUrl = 'https://backdep.onrender.com/api/room-locations';
+const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/room-locations';
 
 @Injectable({ providedIn: 'root' })
 export class RoomLocationService {
   constructor(private http: HttpClient) {}
-
-  getAll(): Observable<any[]> {
-    return this.http.get<any[]>(baseUrl);
-  }
-
-  getById(id: number): Observable<any> {
-    return this.http.get<any>(`${baseUrl}/${id}`);
-  }
-
-  create(roomLocation: any): Observable<any> {
-    return this.http.post<any>(baseUrl, roomLocation);
-  }
-
-  update(id: number, roomLocation: any): Observable<any> {
-    return this.http.put<any>(`${baseUrl}/${id}`, roomLocation);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${baseUrl}/${id}`);
-  }
+  getAll() { return this.http.get<any[]>(baseUrl); }
 } 

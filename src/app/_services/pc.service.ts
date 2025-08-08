@@ -5,37 +5,8 @@ import { Observable } from 'rxjs';
 import { PC, SpecificationField } from '../_models/pc';
 
 @Injectable({ providedIn: 'root' })
-export class PCService {
-    // TEMPORARY FIX: Hardcode the production URL to ensure it works
-    private baseUrl = 'https://backdep.onrender.com/api/pcs';
-
+export class PcService {
+    private baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/pcs';
     constructor(private http: HttpClient) {}
-
-    getAll(): Observable<PC[]> {
-        console.log('PC Service - getAll called, URL:', this.baseUrl);
-        return this.http.get<PC[]>(this.baseUrl);
-    }
-
-    getById(id: number): Observable<PC> {
-        console.log('PC Service - getById called, URL:', `${this.baseUrl}/${id}`);
-        return this.http.get<PC>(`${this.baseUrl}/${id}`);
-    }
-
-    create(pc: PC): Observable<PC> {
-        console.log('PC Service - Creating PC:', pc);
-        console.log('PC Service - URL:', this.baseUrl);
-        return this.http.post<PC>(this.baseUrl, pc);
-    }
-
-    update(id: number, pc: PC): Observable<PC> {
-        return this.http.put<PC>(`${this.baseUrl}/${id}`, pc);
-    }
-
-    delete(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.baseUrl}/${id}`);
-    }
-
-    getSpecificationFields(categoryId: number): Observable<SpecificationField[]> {
-        return this.http.get<SpecificationField[]>(`${this.baseUrl}/specifications/${categoryId}`);
-    }
+    getAll() { return this.http.get<any[]>(this.baseUrl); }
 } 

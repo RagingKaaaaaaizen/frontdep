@@ -8,7 +8,7 @@ import { map, finalize } from 'rxjs/operators';
 import { Account } from '@app/_models';
 
 // TEMPORARY FIX: Hardcode the production URL to ensure it works
-const baseUrl = 'https://backdep.onrender.com/api/accounts';
+const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/accounts';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -61,7 +61,7 @@ export class AccountService {
 
     register(account: Account) {
         // TEMPORARY FIX: Hardcode the URL directly
-        return this.http.post('https://backdep.onrender.com/api/accounts/register', account);
+        return this.http.post('https://inventory-backend-api-production-030e.up.railway.app/api/accounts/register', account);
     }
 
     verifyEmail(token: string) {

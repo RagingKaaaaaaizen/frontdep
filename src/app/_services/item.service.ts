@@ -5,28 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ItemService {
-  // TEMPORARY FIX: Hardcode the production URL to ensure it works
-  private baseUrl = 'https://backdep.onrender.com/api/items';
-
+  private baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/items';
   constructor(private http: HttpClient) {}
-
-  getAll(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl);
-  }
-
-  getById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`);
-  }
-
-  create(item: any): Observable<any> {
-    return this.http.post(this.baseUrl, item);
-  }
-
-  update(id: number, item: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, item);
-  }
-
-  delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  }
+  getAll() { return this.http.get<any[]>(this.baseUrl); }
 }

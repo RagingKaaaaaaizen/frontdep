@@ -4,8 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PCComponent } from '../_models';
 
-// TEMPORARY FIX: Hardcode the production URL to ensure it works
-const baseUrl = 'https://backdep.onrender.com/api/pc-components';
+const baseUrl = 'https://inventory-backend-api-production-030e.up.railway.app/api/pc-components';
 
 @Injectable({ providedIn: 'root' })
 export class PCComponentService {
