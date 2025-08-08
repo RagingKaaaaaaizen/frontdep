@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
+import { ApiTestComponent } from './_components';
 import { AuthGuard } from './_helpers';
 import { Role } from './_models';
 
@@ -16,6 +17,7 @@ const disposeModule = () => import('./dispose/dispose.module').then(x => x.Dispo
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: 'api-test', component: ApiTestComponent }, // Debug route for API testing
     { path: 'account', loadChildren: accountModule },
     { path: 'profile', loadChildren: profileModule, canActivate: [AuthGuard] },
     { path: 'admin', loadChildren: adminModule, canActivate: [AuthGuard], data: { roles: [Role.SuperAdmin] } },

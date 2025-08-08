@@ -7,10 +7,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { fakeBackendProvider } from './_helpers/fake-backend';
 
 import { AppRoutingModule } from './app-routing.module';
-import { JwtInterceptor, ErrorInterceptor, appInitializer } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor, ApiInterceptor, appInitializer } from './_helpers';
 import { AccountService } from './_services/account.service';
 import { AppComponent } from './app.component';
-import { AlertComponent, NavComponent, ProfessionalTableComponent } from './_components';
+import { AlertComponent, NavComponent, ProfessionalTableComponent, ApiTestComponent } from './_components';
 import { HomeComponent } from './home';
 
 @NgModule({
@@ -26,10 +26,12 @@ import { HomeComponent } from './home';
         AlertComponent,
         NavComponent,
         ProfessionalTableComponent,
+        ApiTestComponent,
         HomeComponent       
     ],
     providers: [
         { provide: APP_INITIALIZER, useFactory: appInitializer, multi: true, deps: [AccountService] },
+        { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
