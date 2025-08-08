@@ -43,3 +43,4 @@ Your frontend will be available at: `https://your-frontend-app-name.onrender.com
 - If you see CORS errors, make sure your backend URL is correctly set in the environment variables
 - If the build fails, check that all dependencies are properly listed in `package.json`
 - Make sure your backend is running before testing the frontend
+
