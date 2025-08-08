@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-// import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
-import { PCComponent } from '../_models';
 import { environment } from '@environments/environment';
+import { PCComponent } from '../_models/pc-component';
 
-const baseUrl = `${environment.apiUrl}/pc-components`;
+const baseUrl = `${environment.apiUrl}/api/pc-components`;
 
 @Injectable({ providedIn: 'root' })
 export class PCComponentService {
@@ -15,15 +14,15 @@ export class PCComponentService {
     return this.http.get<PCComponent[]>(baseUrl);
   }
 
-  getById(id: number): Observable<PCComponent> {
+  getById(id: number | string): Observable<PCComponent> {
     return this.http.get<PCComponent>(`${baseUrl}/${id}`);
   }
 
-  getByPCId(pcId: number): Observable<PCComponent[]> {
+  getByPCId(pcId: number | string): Observable<PCComponent[]> {
     return this.http.get<PCComponent[]>(`${baseUrl}/pc/${pcId}`);
   }
 
-  getByItemId(itemId: number): Observable<PCComponent[]> {
+  getByItemId(itemId: number | string): Observable<PCComponent[]> {
     return this.http.get<PCComponent[]>(`${baseUrl}/item/${itemId}`);
   }
 
@@ -31,15 +30,15 @@ export class PCComponentService {
     return this.http.post<PCComponent>(baseUrl, component);
   }
 
-  update(id: number, component: Partial<PCComponent>): Observable<PCComponent> {
+  update(id: number | string, component: Partial<PCComponent>): Observable<PCComponent> {
     return this.http.put<PCComponent>(`${baseUrl}/${id}`, component);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: number | string): Observable<void> {
     return this.http.delete<void>(`${baseUrl}/${id}`);
   }
 
-  returnToStock(id: number): Observable<void> {
+  returnToStock(id: number | string): Observable<void> {
     return this.http.post<void>(`${baseUrl}/${id}/return-to-stock`, {});
   }
 } 

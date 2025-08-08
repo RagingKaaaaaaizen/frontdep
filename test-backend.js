@@ -3,15 +3,13 @@ const https = require('https');
 const backendUrl = 'https://inventory-backend-api-cr3z.onrender.com';
 
 const testEndpoints = [
-  '/accounts/register',
-  '/accounts/authenticate',
-  '/stocks/public',
-  '/items/public',
-  '/categories/public',
-  '/health',
+  '/api/accounts/register',
+  '/api/accounts/authenticate',
+  '/api/stocks/public',
+  '/api/items/public',
+  '/api/categories/public',
   '/api/health',
-  '/v1/health',
-  '/status'
+  '/api/status'
 ];
 
 const alternativeUrls = [
@@ -35,7 +33,7 @@ function testEndpoint(url, endpoint) {
 }
 
 async function runTests() {
-  console.log('🔍 Testing Backend API Connection...\n');
+  console.log('🔍 Testing Backend API Connection with updated endpoints...\n');
   
   for (const baseUrl of alternativeUrls) {
     console.log(`\n📡 Testing base URL: ${baseUrl}`);

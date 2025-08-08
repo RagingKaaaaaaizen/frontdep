@@ -7,7 +7,7 @@ import { map, finalize } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { Account } from '@app/_models';
 
-const baseUrl = `${environment.apiUrl}/accounts`;
+const baseUrl = `${environment.apiUrl}/api/accounts`;
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -98,25 +98,11 @@ export class AccountService {
     }
     
     update(id, params) {
-        return this.http.put(`${baseUrl}/${id}`, params)
-            .pipe(map((account: any) => {
-                // update the current account if it was updated
-                if (this.accountValue && account.id === this.accountValue.id) {
-                    // publish updated account to subscribers
-                    account = { ...this.accountValue, ...account };
-                    this.accountSubject.next(account);
-                }
-                return account;
-            }));
+        return this.http.put(`${baseUrl}/${id}`, params);
     }
     
     delete(id: string) {
-        return this.http.delete(`${baseUrl}/${id}`)
-            .pipe(finalize(() => {
-                // auto logout if the logged in account was deleted
-                if (this.accountValue && id === this.accountValue.id)
-                    this.logout();
-            }));
+        return this.http.delete(`${baseUrl}/${id}`);
     }
 
     // helper methods
@@ -124,10 +110,8 @@ export class AccountService {
     private refreshTokenTimeout;
 
     private startRefreshTokenTimer() {
-        if (!this.accountValue?.jwtToken) return;
-        
         // parse json object from base64 encoded jwt token
-        const jwtToken = JSON.parse(atob(this.accountValue.jwtToken.split('.')[1]));
+        const jwtToken = JSON.parse(atob(this.accountValue!.jwtToken.split('.')[1]));
 
         // set a timeout to refresh the token a minute before it expires
         const expires = new Date(jwtToken.exp * 1000);

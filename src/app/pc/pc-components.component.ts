@@ -1116,9 +1116,12 @@ export class PCComponentsComponent implements OnInit {
   updateComponentStatus(component: PCComponent) {
     console.log('Updating component status:', component.id, 'to:', component.status);
     
-    this.pcComponentService.update(component.id!, {
+    // Create a partial update object with only the status
+    const updateData: Partial<PCComponent> = {
       status: component.status
-    })
+    };
+    
+    this.pcComponentService.update(component.id!, updateData)
     .pipe(first())
     .subscribe({
       next: () => {

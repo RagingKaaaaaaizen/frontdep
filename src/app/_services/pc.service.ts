@@ -8,13 +8,13 @@ import { environment } from '@environments/environment';
 @Injectable({ providedIn: 'root' })
 export class PcService {
     constructor(private http: HttpClient) {}
-    getAll(): Observable<any[]> { return this.http.get<any[]>(`${environment.apiUrl}/pcs`); }
+    getAll(): Observable<any[]> { return this.http.get<any[]>(`${environment.apiUrl}/api/pcs`); }
 
-    getById(id: number | string): Observable<any> { return this.http.get<any>(`${environment.apiUrl}/pcs/${id}`); }
+    getById(id: number | string): Observable<any> { return this.http.get<any>(`${environment.apiUrl}/api/pcs/${id}`); }
 
-    create(pc: any): Observable<any> { return this.http.post<any>(`${environment.apiUrl}/pcs`, pc); }
+    create(pc: any): Observable<any> { return this.http.post<any>(`${environment.apiUrl}/api/pcs`, pc); }
 
-    update(id: number | string, pc: any): Observable<any> { return this.http.put<any>(`${environment.apiUrl}/pcs/${id}`, pc); }
+    update(id: number | string, pc: any): Observable<any> { return this.http.put<any>(`${environment.apiUrl}/api/pcs/${id}`, pc); }
 
-    delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/pcs/${id}`); }
+    delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/api/pcs/${id}`); }
 } 

@@ -8,22 +8,22 @@ export class ItemService {
   constructor(private http: HttpClient) {}
   
   getAll(): Observable<any[]> { 
-    return this.http.get<any[]>(`${environment.apiUrl}/items/public`); 
+    return this.http.get<any[]>(`${environment.apiUrl}/api/items/public`); 
   }
 
   getById(id: number | string): Observable<any> { 
-    return this.http.get<any>(`${environment.apiUrl}/items/${id}`); 
+    return this.http.get<any>(`${environment.apiUrl}/api/items/${id}`); 
   }
 
   create(item: any): Observable<any> { 
-    return this.http.post<any>(`${environment.apiUrl}/items`, item); 
+    return this.http.post<any>(`${environment.apiUrl}/api/items`, item); 
   }
 
   update(id: number | string, item: any): Observable<any> { 
-    return this.http.put<any>(`${environment.apiUrl}/items/${id}`, item); 
+    return this.http.put<any>(`${environment.apiUrl}/api/items/${id}`, item); 
   }
 
   delete(id: number | string): Observable<void> { 
-    return this.http.delete<void>(`${environment.apiUrl}/items/${id}`); 
+    return this.http.delete<void>(`${environment.apiUrl}/api/items/${id}`); 
   }
 }

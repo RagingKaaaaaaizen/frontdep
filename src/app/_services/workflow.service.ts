@@ -10,15 +10,15 @@ import { Workflow } from '@app/_models/workflow';
 @Injectable({ providedIn: 'root' })
 export class WorkflowService {
     constructor(private http: HttpClient) {}
-    getAll(): Observable<Workflow[]> { return this.http.get<Workflow[]>(`${environment.apiUrl}/workflows`); }
+    getAll(): Observable<Workflow[]> { return this.http.get<Workflow[]>(`${environment.apiUrl}/api/workflows`); }
 
-    getById(id: number | string): Observable<Workflow> { return this.http.get<Workflow>(`${environment.apiUrl}/workflows/${id}`); }
+    getById(id: number | string): Observable<Workflow> { return this.http.get<Workflow>(`${environment.apiUrl}/api/workflows/${id}`); }
 
-    getByEmployeeId(employeeId: number | string): Observable<Workflow[]> { return this.http.get<Workflow[]>(`${environment.apiUrl}/workflows/employee/${employeeId}`); }
+    getByEmployeeId(employeeId: number | string): Observable<Workflow[]> { return this.http.get<Workflow[]>(`${environment.apiUrl}/api/workflows/employee/${employeeId}`); }
 
-    create(workflow: Partial<Workflow>): Observable<Workflow> { return this.http.post<Workflow>(`${environment.apiUrl}/workflows`, workflow); }
+    create(workflow: Partial<Workflow>): Observable<Workflow> { return this.http.post<Workflow>(`${environment.apiUrl}/api/workflows`, workflow); }
 
-    update(id: number | string, workflow: Partial<Workflow>): Observable<Workflow> { return this.http.put<Workflow>(`${environment.apiUrl}/workflows/${id}`, workflow); }
+    update(id: number | string, workflow: Partial<Workflow>): Observable<Workflow> { return this.http.put<Workflow>(`${environment.apiUrl}/api/workflows/${id}`, workflow); }
 
-    delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/workflows/${id}`); }
+    delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/api/workflows/${id}`); }
 } 

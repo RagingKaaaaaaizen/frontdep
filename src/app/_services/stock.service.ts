@@ -4,7 +4,7 @@ import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { Stock } from '../_models/stock';
 
-const baseUrl = `${environment.apiUrl}/stocks`;
+const baseUrl = `${environment.apiUrl}/api/stocks`;
 
 @Injectable({ providedIn: 'root' })
 export class StockService {

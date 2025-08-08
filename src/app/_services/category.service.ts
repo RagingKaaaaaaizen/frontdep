@@ -6,13 +6,13 @@ import { environment } from '@environments/environment';
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
   constructor(private http: HttpClient) {}
-  getAll(): Observable<any[]> { return this.http.get<any[]>(`${environment.apiUrl}/categories/public`); }
+  getAll(): Observable<any[]> { return this.http.get<any[]>(`${environment.apiUrl}/api/categories/public`); }
 
-  getById(id: number | string): Observable<any> { return this.http.get<any>(`${environment.apiUrl}/categories/${id}`); }
+  getById(id: number | string): Observable<any> { return this.http.get<any>(`${environment.apiUrl}/api/categories/${id}`); }
 
-  create(category: any): Observable<any> { return this.http.post<any>(`${environment.apiUrl}/categories`, category); }
+  create(category: any): Observable<any> { return this.http.post<any>(`${environment.apiUrl}/api/categories`, category); }
 
-  update(id: number | string, category: any): Observable<any> { return this.http.put<any>(`${environment.apiUrl}/categories/${id}`, category); }
+  update(id: number | string, category: any): Observable<any> { return this.http.put<any>(`${environment.apiUrl}/api/categories/${id}`, category); }
 
-  delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/categories/${id}`); }
+  delete(id: number | string): Observable<void> { return this.http.delete<void>(`${environment.apiUrl}/api/categories/${id}`); }
 }

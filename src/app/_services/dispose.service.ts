@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Dispose } from '../_models';
 import { environment } from '@environments/environment';
-
-const baseUrl = `${environment.apiUrl}/dispose`;
+import { Dispose } from '../_models/dispose';
 
 export interface DisposalValidation {
   valid: boolean;
@@ -14,6 +12,8 @@ export interface DisposalValidation {
   message?: string;
 }
 
+const baseUrl = `${environment.apiUrl}/api/dispose`;
+
 @Injectable({ providedIn: 'root' })
 export class DisposeService {
   constructor(private http: HttpClient) {}
@@ -22,7 +22,7 @@ export class DisposeService {
     return this.http.get<Dispose[]>(baseUrl);
   }
 
-  getById(id: number): Observable<Dispose> {
+  getById(id: number | string): Observable<Dispose> {
     return this.http.get<Dispose>(`${baseUrl}/${id}`);
   }
 
@@ -30,27 +30,27 @@ export class DisposeService {
     return this.http.post<Dispose>(baseUrl, dispose);
   }
 
-  update(id: number, dispose: Partial<Dispose>): Observable<Dispose> {
+  update(id: number | string, dispose: Dispose): Observable<Dispose> {
     return this.http.put<Dispose>(`${baseUrl}/${id}`, dispose);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: number | string): Observable<void> {
     return this.http.delete<void>(`${baseUrl}/${id}`);
   }
 
-  getByItem(itemId: number): Observable<Dispose[]> {
+  getByItemId(itemId: number | string): Observable<Dispose[]> {
     return this.http.get<Dispose[]>(`${baseUrl}/item/${itemId}`);
   }
 
-  validateDisposal(itemId: number, quantity: number): Observable<DisposalValidation> {
+  validateDisposal(itemId: number | string, quantity: number): Observable<DisposalValidation> {
     return this.http.post<DisposalValidation>(`${baseUrl}/validate`, { itemId, quantity });
   }
 
-  getDisposalWithStock(disposalId: number): Observable<any> {
+  getDisposalWithStock(disposalId: number | string): Observable<any> {
     return this.http.get<any>(`${baseUrl}/${disposalId}/with-stock`);
   }
 
-  getStockWithDisposal(itemId: number): Observable<any[]> {
+  getStockWithDisposal(itemId: number | string): Observable<any[]> {
     return this.http.get<any[]>(`${baseUrl}/stock-with-disposal/${itemId}`);
   }
 } 
