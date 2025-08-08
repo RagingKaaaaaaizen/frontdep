@@ -1,5 +1,5 @@
 // Production environment - DO NOT CHANGE THIS URL
 export const environment = {
   production: true,
-  apiUrl: 'https://backdep.onrender.com'
+  apiUrl: 'inventory-backend-api-production-030e.up.railway.app'
 };

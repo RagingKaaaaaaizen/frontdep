@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: true,
-  apiUrl: 'https://backdep.onrender.com'
+  production: false,
+  apiUrl: 'inventory-backend-api-production-030e.up.railway.app'
 };
 
 /*
